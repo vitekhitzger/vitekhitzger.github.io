@@ -26,15 +26,7 @@
                 My Resume
             </a>
             
-            <!-- <a href="projects.html" class="link-btn">
-                My Projects
-            </a> -->
-
-            <!-- <a href="https://github.com/vitekhitzger" target="_blank" class="link-btn">
-                My GitHub
-            </a> -->
-            
-            <a href="mailto:vitek.hitzger@gmail.com" class="link-btn">
+            <a href="javascript:void(0);" id="emailBtn" class="link-btn" onclick="zkopirujEmail('vitek.hitzger@gmail.com')">
                 Contact me!<br>(vitek.hitzger@gmail.com)
             </a>
             
@@ -43,6 +35,35 @@
             &copy; Vít Hitzger
         </div>
     </div>
+
+    <script>
+        function zkopirujEmail(email) {
+            navigator.clipboard.writeText(email)
+                .then(() => {
+                    const tlacitko = document.getElementById("emailBtn");
+                    // Uložíme si původní HTML tlačítka (včetně <br> tagu)
+                    const puvodniObsah = tlacitko.innerHTML; 
+                    
+                    // Změníme text a barvu pro zpětnou vazbu
+                    tlacitko.innerHTML = "E-mail zkopírován! ✓";
+                    tlacitko.style.backgroundColor = "#4CAF50"; // Zelená barva úspěchu
+                    tlacitko.style.color = "white";
+                    tlacitko.style.borderColor = "#4CAF50"; // Sladění rámečku, pokud nějaký máš
+
+                    // Za 2 vteřiny vrátíme tlačítko do původního stavu
+                    setTimeout(() => {
+                        tlacitko.innerHTML = puvodniObsah;
+                        tlacitko.style.backgroundColor = ""; 
+                        tlacitko.style.color = "";
+                        tlacitko.style.borderColor = "";
+                    }, 2000);
+                })
+                .catch((chyba) => {
+                    console.error("Kopírování selhalo:", chyba);
+                    alert("Něco se pokazilo, zkopírujte prosím e-mail ručně.");
+                });
+        }
+    </script>
 
 </body>
 </html>
