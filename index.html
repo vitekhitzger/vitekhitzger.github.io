@@ -26,7 +26,7 @@
                 My Resume
             </a>
             
-            <a href="javascript:void(0);" id="emailBtn" class="link-btn" onclick="zkopirujEmail('vitek.hitzger@gmail.com')">
+            <a href="javascript:void(0);" id="emailBtn" class="link-btn" onclick="copyEmail('vitek.hitzger@gmail.com')">
                 Contact me!
             </a>
             
@@ -37,7 +37,7 @@
     </div>
 
     <script>
-        function zkopirujEmail(email) {
+        function copyEmail(email) {
             navigator.clipboard.writeText(email)
                 .then(() => {
                     const tlacitko = document.getElementById("emailBtn");
@@ -45,7 +45,7 @@
                     const puvodniObsah = tlacitko.innerHTML; 
                     
                     // Změníme text a barvu pro zpětnou vazbu
-                    tlacitko.innerHTML = "E-mail zkopírován! ✓";
+                    tlacitko.innerHTML = "Copied to clipboard! ✓";
                     tlacitko.style.backgroundColor = "#4CAF50"; // Zelená barva úspěchu
                     tlacitko.style.color = "white";
                     tlacitko.style.borderColor = "#4CAF50"; // Sladění rámečku, pokud nějaký máš
